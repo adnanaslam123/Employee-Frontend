@@ -1,12 +1,59 @@
-# React + Vite
+# 👨‍💼 Employee Management System - Frontend (React.js)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the frontend of the **Employee Management System** built using **React.js** and **Tailwind CSS**. It supports role-based login for Admin and Employees, dashboard views, form validations, password reset via OTP, and integration with a Spring Boot backend.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🔐 Login & Signup (with role-based JWT Auth)
+- 🧑‍💻 Employee Dashboard
+- 🛠️ Admin Dashboard (view, edit, delete employees)
+- 📧 Forgot Password via OTP (Email-based)
+- 📝 Form validation, password strength indicator
+- 🌙 Dark Mode toggle
+- 🔥 Google Sign-in via Firebase Auth
+- ⚙️ Integration with Spring Boot Backend
 
-## Expanding the ESLint configuration
+## 🧱 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Tech | Description |
+|------|-------------|
+| **React.js** | Frontend Library |
+| **Tailwind CSS** | Styling |
+| **React Router** | Page Navigation |
+| **Axios** | API Requests |
+| **Firebase** | Google Auth |
+| **Toastify** | Notifications |
+| **Spring Boot** | Backend (separate repo) |
+
+## 📂 Folder Structure
+
+src/
+├── component/ # Reusable components (Login, Signup, Navbar, Dashboards)
+├── pages/ # Page views
+├── assets/ # Icons, images
+├── firebase.jsx # Firebase config
+├── main.jsx # Root file
+└── App.jsx # App routes
+
+
+## 🌐 Backend Repository
+
+👉 [Backend GitHub Repo](https://github.com/adnanaslam123/Employee-Backened)
+
+## 📦 Getting Started
+
+1. Clone the repo:
+
+```bash
+git clone https://github.com/adnanaslam123/Employee-Frontend.git
+cd Employee-Frontend
+
+2. Install dependencies:
+
+npm install
+Run the project:
+
+npm run dev
+Make sure the backend (Spring Boot) is also running on http://localhost:8080
+
+This project is licensed under the MIT License.
