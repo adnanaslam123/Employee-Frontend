@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import API from './Api';
+import API from './API';
 import { toast, ToastContainer } from 'react-toastify';
 import { auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
