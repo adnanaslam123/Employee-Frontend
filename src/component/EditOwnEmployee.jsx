@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "./Api";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -31,8 +31,8 @@ const EditOwnEmployee = () => {
   useEffect(() => {
     if (!token) return;
 
-    axios
-      .get(`http://localhost:8080/employee/me`, {
+    API
+      .get(`/employee/me`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -62,8 +62,8 @@ const EditOwnEmployee = () => {
 
     try {
       // Step 1: Validate old password
-      const res = await axios.post(
-        "http://localhost:8080/employee/validate-password",
+      const res = await API.post(
+        "/employee/validate-password",
         { password: oldPassword },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -101,7 +101,7 @@ const EditOwnEmployee = () => {
 
       // Step 3: Proceed to update
       setSubmitting(true);
-      await axios.put("http://localhost:8080/employee/update", updatedEmployee, {
+      await API.put("/employee/update", updatedEmployee, {
         headers: { Authorization: `Bearer ${token}` },
       });
 

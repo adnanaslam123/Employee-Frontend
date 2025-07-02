@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+// import axios from "axios";
+import API from "./Api";
 import { useNavigate, Link } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -35,7 +36,8 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:8080/auth/login", credentials);
+      const response = await API.post("/auth/login", credentials);
+      // const response = await axios.post("/auth/login", credentials);
       const { token, role, email, name } = response.data;
        login({ token, role, email, name });
 

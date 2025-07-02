@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import axios from 'axios';
+import API from './Api';
 import { toast, ToastContainer } from 'react-toastify';
 import { auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
@@ -92,7 +93,7 @@ const Signup = () => {
 
     setSubmitting(true);
     try {
-      await axios.post('http://localhost:8080/register', user);
+      await API.post('/register', user);
       toast.success('Signup successful!');
       setUser({ name: '', email: '', password: '', department: '', salary: '' });
       setErrors({});
@@ -116,7 +117,7 @@ const Signup = () => {
         department: "General",
         salary: 0
       };
-      await axios.post('http://localhost:8080/register', newUser);
+      await API.post('/register', newUser);
       toast.success("Google signup successful!");
     } catch (error) {
       const msg = error.response?.data || "Google signup failed.";

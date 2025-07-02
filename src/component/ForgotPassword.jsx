@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios";
+import API from "./Api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 
@@ -13,7 +13,7 @@ const ForgotPassword = () => {
 
   const sendOtp = async () => {
     try {
-      await axios.post("http://localhost:8080/auth/send-otp", { email });
+      await API.post("/auth/send-otp", { email });
       toast.success("OTP sent to your email");
       setStep(2);
     } catch {
@@ -23,7 +23,7 @@ const ForgotPassword = () => {
 
   const verifyOtp = async () => {
     try {
-      await axios.post("http://localhost:8080/auth/verify-otp", { email, otp });
+      await API.post("/auth/verify-otp", { email, otp });
       toast.success("OTP verified, now set new password");
       setStep(3);
     } catch {
@@ -33,7 +33,7 @@ const ForgotPassword = () => {
 
   const resetPassword = async () => {
     try {
-      await axios.post("http://localhost:8080/auth/reset-password", {
+      await API.post("/auth/reset-password", {
         email,
         password: newPassword,
       });

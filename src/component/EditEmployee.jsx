@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "./Api";
 import { useParams, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import { ToastContainer, toast } from "react-toastify";
@@ -27,8 +27,8 @@ const EditEmployee = () => {
   useEffect(() => {
     if (!token) return;
 
-    axios
-      .get(`http://localhost:8080/admin/employees/${id}`, {
+    API
+      .get(`/admin/employees/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -57,7 +57,7 @@ const EditEmployee = () => {
 
     try {
       setSubmitting(true);
-      await axios.put(`http://localhost:8080/admin/update/${id}`, employee, {
+      await API.put(`/admin/update/${id}`, employee, {
         headers: { Authorization: `Bearer ${token}` },
       });
       toast.success("Employee updated successfully!");

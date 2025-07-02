@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "./Api"
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useAuth } from "./AuthContext";
@@ -17,8 +17,8 @@ const EmployeeDashboard = () => {
   useEffect(() => {
     if (!token) return;
 
-    axios
-      .get("http://localhost:8080/employee/me", {
+    API
+      .get("/employee/me", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setEmployee(res.data))
@@ -33,7 +33,7 @@ const EmployeeDashboard = () => {
 
 const confirmDelete = async () => {
   try {
-    await axios.delete(`http://localhost:8080/employee/delete`, {
+    await API.delete(`/employee/delete`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 

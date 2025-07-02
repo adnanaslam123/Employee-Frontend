@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+// import AXIOS from "axios";
+import API from "./Api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "./AuthContext"; 
@@ -20,8 +21,8 @@ const token = auth.token;
     //  setTimeout(() => toast.success("Admin Dashboard Loaded!"), 100);
     if (!token) return;
 
-    axios
-      .get("http://localhost:8080/admin/employees", {
+    API
+      .get("/admin/employees", {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => setEmployees(res.data))
@@ -38,7 +39,7 @@ const token = auth.token;
 // const confirmDelete = async (id) => {
 //   try {
 //       toast.dismiss(); 
-//     await axios.delete(`http://localhost:8080/admin/employees/${id}`, {
+//     await API.delete(`/admin/employees/${id}`, {
 //       headers: { Authorization: `Bearer ${token}` },
 //     });
 
@@ -60,7 +61,7 @@ const confirmDelete = async (id) => {
     setIsDeleting(true);         // Show loading
     toast.dismiss();             // Clear any previous toasts
 
-    await axios.delete(`http://localhost:8080/admin/employees/${id}`, {
+    await API.delete(`/admin/employees/${id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
 
