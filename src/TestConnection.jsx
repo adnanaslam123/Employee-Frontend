@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
+import API from "./component/Api"
 
 function TestConnection() {
   const [status, setStatus] = useState("Testing connection...");
@@ -8,7 +8,7 @@ function TestConnection() {
     async function testApi() {
       try {
         // Step 1: Login to get JWT token
-        const loginResponse = await axios.post("http://localhost:8080/login", {
+        const loginResponse = await API.post("/login", {
           email: "admin@email.com",    // use your test user email here
           password: "admin123"          // use your test user password here
         });
@@ -17,7 +17,7 @@ function TestConnection() {
         console.log("✅ Login successful. Token:", token);
 
         // Step 2: Use token to call protected endpoint
-        const profileResponse = await axios.get("http://localhost:8080/employee/me", {
+        const profileResponse = await API.get("/employee/me", {
           headers: {
             Authorization: `Bearer ${token}`
           }
