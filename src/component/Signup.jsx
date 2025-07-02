@@ -5,6 +5,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import { auth, provider } from '../firebase';
 import { signInWithPopup } from 'firebase/auth';
 import 'react-toastify/dist/ReactToastify.css';
+import { Link } from 'react-router-dom';
 
 const Signup = () => {
   const [user, setUser] = useState({
